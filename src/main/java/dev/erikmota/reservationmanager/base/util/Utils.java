@@ -1,6 +1,7 @@
 package dev.erikmota.reservationmanager.base.util;
 
 import dev.erikmota.reservationmanager.base.exception.message.MessageEnum;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +11,35 @@ public class Utils {
 
     public static String trim(String str) {
         return str != null ? str.trim() : null;
+    }
+
+    public static Boolean comparePasswords(String password1, String password2) {
+        return password1 != null && password1.equals(password2);
+    }
+
+    public static String encryptPassword(String password) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        if (password != null) {
+            return encoder.encode(password);
+        } else {
+            return null;
+        }
+    }
+
+    public static List<MessageEnum> validatePassword(String password) {
+        List<MessageEnum> errors = new ArrayList<>();
+        String regex = "^(?=.*[a-zA-Z])(?=.*\\d).+$";
+
+        if (password != null) {
+            if (password.trim().length() < 8) {
+                errors.add(MessageEnum.PASSWORD_MIN_LENGTH);
+            }
+            if (!Pattern.matches(regex, password)) {
+                errors.add(MessageEnum.PASSWORD_NUM_LETTER);
+            }
+        }
+
+        return errors;
     }
 
     public static List<MessageEnum> validateEmail(String email) {

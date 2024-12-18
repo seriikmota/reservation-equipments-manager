@@ -23,7 +23,7 @@ public class User implements GenericModel<Long> {
     private Long id;
 
     @Column(unique = true, nullable = false)
-    private String username;
+    private String login;
 
     @Column(nullable = false)
     private String password;
@@ -36,6 +36,9 @@ public class User implements GenericModel<Long> {
 
     @Column(nullable = false)
     private String registrationCode;
+
+    @Column(nullable = false)
+    private Boolean active;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Reservation> reservations;
