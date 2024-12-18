@@ -2,6 +2,7 @@ package dev.erikmota.reservationmanager.base.util;
 
 import dev.erikmota.reservationmanager.base.annotations.EmailValidate;
 import dev.erikmota.reservationmanager.base.annotations.MandatoryField;
+import dev.erikmota.reservationmanager.base.annotations.PasswordValidate;
 import dev.erikmota.reservationmanager.base.exception.message.MessageEnum;
 
 import java.lang.reflect.Field;
@@ -69,6 +70,10 @@ public class ReflectionUtils {
         if (field.isAnnotationPresent(EmailValidate.class)) {
             addFieldErrors(errorsMap, getNameEmailAnnotation(field), Utils.validateEmail((String) fieldValue));
         }
+
+        if (field.isAnnotationPresent(PasswordValidate.class)) {
+            addFieldErrors(errorsMap, getNamePasswordAnnotation(field), Utils.validatePassword((String) fieldValue));
+        }
     }
 
     private static void addFieldErrors(Map<String, List<MessageEnum>> errorsMap, String fieldName, List<MessageEnum> errors) {
@@ -119,6 +124,16 @@ public class ReflectionUtils {
         String nameOfAnnotation = field.getAnnotation(MandatoryField.class).name();
         if (nameOfAnnotation != null && !nameOfAnnotation.isBlank()) {
             return field.getAnnotation(MandatoryField.class).name();
+        } else {
+            return field.getName();
+        }
+    }
+
+
+    public static String getNamePasswordAnnotation(Field field) {
+        String nameOfAnnotation = field.getAnnotation(PasswordValidate.class).name();
+        if (nameOfAnnotation != null && !nameOfAnnotation.isBlank()) {
+            return field.getAnnotation(PasswordValidate.class).name();
         } else {
             return field.getName();
         }

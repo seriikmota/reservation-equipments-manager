@@ -11,8 +11,9 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 public class UserResponseDTO {
     private Long id;
-    private String username;
+    private String login;
     private String name;
     private String email;
     private String registrationCode;
+    private Boolean active;
 }
