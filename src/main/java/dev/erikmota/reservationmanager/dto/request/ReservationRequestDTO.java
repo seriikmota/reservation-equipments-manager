@@ -1,6 +1,5 @@
 package dev.erikmota.reservationmanager.dto.request;
 
-import dev.erikmota.reservationmanager.entities.EquipmentType;
 import dev.erikmota.reservationmanager.entities.ReservationStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ReservationRequestDTO {
-    private EquipmentType typeEquipment;
+    private String typeEquipment;
     private Integer quantity;
     private LocalDateTime startDate;
     private LocalDateTime endDate;

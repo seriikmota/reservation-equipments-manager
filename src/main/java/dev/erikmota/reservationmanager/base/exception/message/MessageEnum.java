@@ -14,7 +14,8 @@ public enum MessageEnum {
     PASSWORDS_DIFFERENT("ME008", Message.MessageType.ERROR),
     EMAIL_EXISTS("ME009", Message.MessageType.ERROR),
     LOGIN_EXISTS("ME010", Message.MessageType.ERROR),
-    DELETE_USER_ACTIVE("ME011", Message.MessageType.ERROR);
+    DELETE_USER_ACTIVE("ME011", Message.MessageType.ERROR),
+    HERITAGE_CODE_EXISTS("ME012", Message.MessageType.ERROR);
 
     private final String code;
     private final Message.MessageType type;
