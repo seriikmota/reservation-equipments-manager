@@ -24,7 +24,7 @@ public class Reservation implements GenericModel<Long> {
     private Long id;
 
     @Column(nullable = false)
-    private EquipmentType typeEquipment;
+    private String typeEquipment;
 
     @Column(nullable = false)
     private Integer quantity;

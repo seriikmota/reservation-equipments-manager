@@ -1,7 +1,6 @@
 package dev.erikmota.reservationmanager.dto.response;
 
 import dev.erikmota.reservationmanager.entities.EquipmentState;
-import dev.erikmota.reservationmanager.entities.EquipmentType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,7 +16,6 @@ public class EquipmentResponseDTO {
     private String brand;
     private String model;
     private String description;
-    private EquipmentType equipmentType;
+    private String type;
     private EquipmentState state;
-    private Boolean available;
 }

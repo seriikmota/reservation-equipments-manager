@@ -33,14 +33,10 @@ public class Equipment implements GenericModel<Long> {
     private String description;
 
     @Column(nullable = false)
-    @Enumerated(EnumType.ORDINAL)
-    private EquipmentType type;
+    private String type;
 
     @Column(nullable = false)
     @Enumerated(EnumType.ORDINAL)
     private EquipmentState state;
-
-    @Column(nullable = false)
-    private Boolean available;
 }
 

@@ -4,5 +4,14 @@ import lombok.Getter;
 
 @Getter
 public enum EquipmentState {
-    USABLE, IN_MAINTENANCE, IN_REPAIR, DEFECTIVE, OBSOLETE, RESERVED, AWAITING_RETURN
+    USABLE(1, "Disponível"),
+    IN_MAINTENANCE(2, "Em manutenção"),
+    IN_REPAIR(3, "Em repação"),
+    DEFECTIVE(4, "Com defeito"),
+    OBSOLETE(5, "Obsoleto"),
+    RESERVED(6, "Reservado"),
+    AWAITING_RETURN(7, "Aguardando Retorno");
+
+    EquipmentState(Integer code, String description) {
+    }
 }
