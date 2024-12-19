@@ -1,26 +1,33 @@
 package dev.erikmota.reservationmanager.dto.request;
 
-import dev.erikmota.reservationmanager.entities.ReservationStatus;
+import dev.erikmota.reservationmanager.base.annotations.MandatoryField;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Data
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
 public class ReservationRequestDTO {
+
+    @MandatoryField(name = "Tipo de Equipamento")
     private String typeEquipment;
+
+    @MandatoryField(name = "Quantidade")
     private Integer quantity;
+
+    @MandatoryField(name = "Data e Hora Inicial")
     private LocalDateTime startDate;
+
+    @MandatoryField(name = "Data e Hora Final")
     private LocalDateTime endDate;
-    private LocalDateTime reservationDate;
-    private String notes;
-    private ReservationStatus status;
+
+    @MandatoryField(name = "Usuário da Reserva")
     private Long userId;
-    private List<Long> equipmentsId;
+
+    private String notes;
 }

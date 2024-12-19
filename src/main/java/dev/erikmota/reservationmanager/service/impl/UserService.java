@@ -11,6 +11,7 @@ import dev.erikmota.reservationmanager.entities.User;
 import dev.erikmota.reservationmanager.mapper.UserMapper;
 import dev.erikmota.reservationmanager.repository.UserRepository;
 import dev.erikmota.reservationmanager.service.IUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,14 +19,17 @@ import java.util.List;
 @Service
 public class UserService extends AbstractService<UserRequestDTO, UserResponseDTO, UserListDTO, User, UserRepository, UserMapper, Long> implements IUserService {
 
+    @Autowired
+    private UserRepository userRepository;
+
     @Override
     protected void prepareToCreate(User data) {
         data.setPassword(Utils.encryptPassword(data.getPassword()));
     }
 
     @Override
-    protected void prepareToUpdate(User dataDB) {
-        dataDB.setPassword(Utils.encryptPassword(dataDB.getPassword()));
+    protected void prepareToUpdate(User dataUpdate) {
+        dataUpdate.setPassword(Utils.encryptPassword(dataUpdate.getPassword()));
     }
 
     @Override
@@ -59,5 +63,10 @@ public class UserService extends AbstractService<UserRequestDTO, UserResponseDTO
         if ((dtoUpdate.getPassword() != null || dtoUpdate.getConfirmPassword() != null) && !Utils.comparePasswords(dtoUpdate.getPassword(), dtoUpdate.getConfirmPassword())) {
             messagesToThrow.add(new Message(MessageEnum.PASSWORDS_DIFFERENT));
         }
+    }
+
+    @Override
+    public Boolean existsById(Long id) {
+        return userRepository.existsById(id);
     }
 }
