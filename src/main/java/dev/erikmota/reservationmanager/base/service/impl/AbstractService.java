@@ -175,6 +175,6 @@ public abstract class AbstractService<DTORequest, DTOResponse, DTOList, MODEL ex
     }
 
     protected abstract void prepareToCreate(MODEL data);
-    protected abstract void prepareToUpdate(MODEL dataDB);
+    protected abstract void prepareToUpdate(MODEL dataUpdate);
     protected abstract void prepareToDelete(MODEL dataDB);
 }

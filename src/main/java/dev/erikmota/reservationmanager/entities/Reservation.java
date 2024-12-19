@@ -49,7 +49,7 @@ public class Reservation implements GenericModel<Long> {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "reservations_equipments",
             joinColumns = @JoinColumn(name = "reservation_id"),

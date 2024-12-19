@@ -17,11 +17,11 @@ public class BusinessException extends RuntimeException {
         this.messageResponse = messageResponse;
     }
 
-    public BusinessException(MessageEnum messageEnum){
+    public BusinessException(MessageEnum messageEnum, Object... args){
         super();
         messageResponse = new MessageResponse();
         messageResponse.setStatusCode(HttpStatus.BAD_REQUEST.value());
         messageResponse.setMessages(new ArrayList<>());
-        messageResponse.getMessages().add(new Message(messageEnum));
+        messageResponse.getMessages().add(new Message(messageEnum, args));
     }
 }
