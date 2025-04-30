@@ -60,7 +60,9 @@ public class UserService extends AbstractService<UserRequestDTO, UserResponseDTO
     protected void validateToMapUpdate(UserRequestDTO dtoUpdate, List<Message> messagesToThrow) {
         super.validateToMapUpdate(dtoUpdate, messagesToThrow);
 
-        if ((dtoUpdate.getPassword() != null || dtoUpdate.getConfirmPassword() != null) && !Utils.comparePasswords(dtoUpdate.getPassword(), dtoUpdate.getConfirmPassword())) {
+        if (dtoUpdate.getPassword() == null &&  dtoUpdate.getConfirmPassword() == null) return;
+
+        if (!Utils.comparePasswords(dtoUpdate.getPassword(), dtoUpdate.getConfirmPassword())) {
             messagesToThrow.add(new Message(MessageEnum.PASSWORDS_DIFFERENT));
         }
     }
