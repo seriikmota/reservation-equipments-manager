@@ -24,7 +24,13 @@ public enum MessageEnum {
     RESERVATION_DATE_START_BEFORE_NOW("ME018", Message.MessageType.ERROR),
     RESERVATION_DATE_END_BEFORE_START("ME019", Message.MessageType.ERROR),
     RESERVATION_DATE_END_BEFORE_NOW("ME020", Message.MessageType.ERROR),
-    RESERVATION_CONFIRM_CANCEL("ME021", Message.MessageType.ERROR);
+    RESERVATION_CONFIRM_CANCEL("ME021", Message.MessageType.ERROR),
+    LOGIN_INVALID("ME022", Message.MessageType.ERROR),
+    USER_PASSWORD_NOT_MATCH("ME023", Message.MessageType.ERROR),
+    INACTIVE_USER("ME024", Message.MessageType.ERROR),
+    INVALID_TOKEN("ME025", Message.MessageType.ERROR),
+    EXPIRED_TOKEN("ME026", Message.MessageType.ERROR),
+    ACCESS_DENIED("ME027", Message.MessageType.ERROR);
 
     private final String code;
     private final Message.MessageType type;
